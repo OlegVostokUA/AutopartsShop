@@ -1,0 +1,26 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}Autoparts Shop{% endif %}
+{% endblock %}
+{% block content %}
+    {% for component in components %}
+        <div class="col mb-5">
+            <div class="card h-100">
+                <!-- Product image-->
+                <img class="item-img-list" src="{{ component.get_image }}">
+                <!-- Product details-->
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <!-- Product name-->
+                        <h4><a class="fw-bolder" href="{{ component.get_absolute_url }}">{{ component.name }}</a></h4>
+
+                        <hr>
+                        <!-- Product price-->
+                        <h4>{{ component.price }} {{ component.currency }}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
