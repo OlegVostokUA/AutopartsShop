@@ -4,12 +4,21 @@
     {% if category %}{{ category.name }}{% else %}Autoparts Shop{% endif %}
 {% endblock %}
 {% block content %}
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
     {% for component in components %}
         <div class="col mb-5">
             <div class="card h-100">
                 <!-- Product image-->
                 <img class="item-img-list" src="{{ component.get_image }}">
                 <!-- Product details-->
+                <p class="tags">Теги:
+                    {% for tag in component.tags.all %}
+                        <a class="badge bg-secondary text-decoration-none link-light" href="{% url 'shop:component_list_by_tag' tag.slug %}">
+                            {{ tag.name }}
+                        </a>
+                        {% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
                 <div class="card-body p-4">
                     <div class="text-center">
                         <!-- Product name-->
@@ -23,4 +32,5 @@
             </div>
         </div>
     {% endfor %}
+    </div>
 {% endblock %}

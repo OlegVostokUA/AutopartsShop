@@ -5,9 +5,10 @@
     {% if category %}{{ category.title }}{% else %}Components{% endif %}
 {% endblock %}
 {% block content %}
-    <div class="row" style="width: 100%;">
-        <div class="col-md-8">
-            <div class="carousel">
+<div class="table-component">
+    <div class="row-image-detail" style="width: 100%;">
+       <div class="col-md-8">
+          <div class="carousel">
               <div class="carousel-container">
                 {% for image_object in component.images.all %}
                     <img class="item-img-list" src="{{ image_object.image.url }}">
@@ -16,17 +17,31 @@
               </div>
               <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
               <a class="next" onclick="plusSlides(1)">&#10095;</a>
-            </div>
-        </div>
-         <div class="col-md-8">
-            <h1>{{ component.name }}</h1>
-            <h5><a href="{{ product.category.get_absolute_url }}">{{ component.category }}</a></h5>
-            <h5 class="price">Бренд: {{ component.brand }}</h5>
-            <h5 class="price">Серийный номер: {{ component.serial_number }}</h5>
-            <h5 class="price">{{ component.price }} {{ component.currency }}</h5>
+          </div>
+       </div>
+    </div>
+         <div class="row-table-detail">
+             <h1>{{ component.name }}</h1>
+             <h6><a href="{{ product.category.get_absolute_url }}">{{ component.category }}</a></h6>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>Бренд: </td>
+                  <td>{{ component.brand }}</td>
+                </tr>
+                <tr>
+                  <td>Серийный номер: </td>
+                  <td>{{ component.serial_number }}</td>
+                </tr>
+                <tr>
+                  <td>Цена: </td>
+                  <td>{{ component.price }} {{ component.currency }}</td>
+                </tr>
+              </tbody>
+            </table>
             {{ component.description|linebreaks }}
-
          </div>
+
         <br>
         <!--
         <form action="{#% url 'cart:cart_add' component.id %}" method="post" style="margin-top: 10px;">
@@ -35,5 +50,5 @@
             <input class="btn btn-outline-dark mt-auto" type="submit" value="Add to cart"></h5>
         </form>
         -->
-    </div>
+</div>
 {% endblock %}

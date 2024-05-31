@@ -3473,7 +3473,7 @@ textarea.form-control-lg {
   width: 100%;
   padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
   clear: both;
-  font-weight: 400;
+  font-weight: 480;
   color: var(--bs-dropdown-link-color);
   text-align: inherit;
   text-decoration: none;
@@ -3481,6 +3481,22 @@ textarea.form-control-lg {
   background-color: transparent;
   border: 0;
 }
+
+.dropdown-item-2 {
+  display: block;
+  width: 100%;
+  padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
+  clear: both;
+  font-weight: 420;
+  color: var(--bs-dropdown-link-color);
+  text-align: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+  margin-left: 20px;
+}
+
 .dropdown-item:hover, .dropdown-item:focus {
   color: var(--bs-dropdown-link-hover-color);
   background-color: var(--bs-dropdown-link-hover-bg);
@@ -10927,4 +10943,23 @@ textarea.form-control-lg {
     background-image: url('../img/logo.png');
     /*background-size: cover;*/
     /*background-repeat: repeat;*/
+}
+
+.table-component {
+    flex-direction: row;
+    display: flex;
+}
+
+.row-image-detail {
+    width: 40%;
+    height: 40%;
+}
+
+.row-table-detail {
+    width: 60%;
+    height: 60%;
+}
+
+.tags {
+    margin-left: 15px;
 }

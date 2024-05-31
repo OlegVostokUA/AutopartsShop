@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load shop_tags %}
 <html>
 <head>
     <meta charset="utf-8" />
@@ -23,14 +24,19 @@
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li> {% if not category %} {% endif %}
-                                    <a class="dropdown-item" href="{% url 'shop:component_list' %}">All Products</a>
+                                    <a class="dropdown-item" href="{% url 'shop:component_list' %}">Все детали</a>
                                 </li>
                                 <li><hr class="dropdown-divider" /></li>
-                                {% for c in categories %}
-                                <li>
-                                    {% if category.slug == c.slug %} {% endif %}
-                                    <a class="dropdown-item" href="{{ c.get_absolute_url }}">{{ c.name }}</a>
-                                </li>
+                                {% for cat_parent in categories %}
+                                    <li>
+                                        <a class="dropdown-item" href="{{ cat_parent.get_absolute_url }}">{{ cat_parent.name }}</a>
+                                    </li>
+                                    {% for cat_children in cat_parent.children.all %}
+                                    <li>
+                                        <a class="dropdown-item-2" href="{{ cat_children.get_absolute_url }}">   {{ cat_children.name }}</a>
+                                    </li>
+                                    {% endfor %}
+                                    {% if not forloop.last %}<li><hr class="dropdown-divider" /></li>{% endif %}
                                 {% endfor %}
                             </ul>
                         </li>
@@ -67,10 +73,15 @@
                 </div>
             </div>
         </header>
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <div class="sb-sidenav-collapse-arrow">
+                <p class="card-header">Всего {% total_components %} деталей в продаже </p>
+            </div>
+        </header>
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
                 {% block content %}
                 {% endblock %}
                 </div>
