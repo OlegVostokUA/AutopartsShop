@@ -21,7 +21,7 @@ class Category(models.Model):
         while k is not None:
             full_path.append(k.name)
             k = k.parent
-        return ' > '.join(full_path[::-1])
+        return ' > '.join(full_path[::-1])#
 
     def get_absolute_url(self):
         return reverse('shop:component_list_by_category', args=[self.slug])
