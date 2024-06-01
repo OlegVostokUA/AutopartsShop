@@ -21,7 +21,7 @@ class Category(models.Model):
         while k is not None:
             full_path.append(k.name)
             k = k.parent
-        return ' > '.join(full_path[::-1])#
+        return ' > '.join(full_path[::-1])
 
     def get_absolute_url(self):
         return reverse('shop:component_list_by_category', args=[self.slug])
@@ -44,7 +44,6 @@ class Component(models.Model):
     slug = models.SlugField(verbose_name='Слаг', max_length=255)
     price = models.DecimalField(verbose_name='Цена', max_digits=7, decimal_places=2, default=0.00)
     currency = models.CharField(max_length=10, choices=CURRENCY_CHOICES, default='UAH')
-    #image = models.ImageField(verbose_name='Изображение', upload_to='component/components/%Y/%m/%d')
     available = models.BooleanField(default=True)
     created_at = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='Дата изменения', auto_now=True)

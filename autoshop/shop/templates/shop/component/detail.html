@@ -43,12 +43,11 @@
          </div>
 
         <br>
-        <!--
-        <form action="{#% url 'cart:cart_add' component.id %}" method="post" style="margin-top: 10px;">
-            <h5>{#{ cart_product_form }}
-            {#% csrf_token %}
-            <input class="btn btn-outline-dark mt-auto" type="submit" value="Add to cart"></h5>
+    </div>
+        <form action="{% url 'cart:cart_add' component.id %}" method="post" class="form-custom">
+            <h5>{{ cart_component_form }}
+                {% csrf_token %}
+            </h5>
+            <input class="btn btn-outline-dark mt-auto butt" type="submit" value="Добавить в корзину">
         </form>
-        -->
-</div>
 {% endblock %}

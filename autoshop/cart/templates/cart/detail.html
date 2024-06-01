@@ -1,0 +1,60 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+    Ваша корзина
+{% endblock %}
+{% block content %}
+<div class="cart-main" style="width: 100%">
+    <h1>Ваша корзина</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <!--<th scope="col">Изображение       </th>-->
+            <th scope="col">Деталь     </th>
+            <th scope="col">Количество    </th>
+            <th scope="col">Удалить      </th>
+            <th scope="col">Цена  </th>
+            <th scope="col">Сума       </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in cart %}
+            {% with component=item.component %}
+                <tr>
+                    <!--
+                    <td>
+                        <a href="{#{ component.get_absolute_url }}">
+                            <img class="item-img-cart" src="
+                                {#% if component.image %}
+                                    {#{ product.image.url }}
+                                {#% else %}
+                                    {#% static 'img/no_image.png' %}
+                                {#% endif %}" style="max-width: 75px; max-height: 75px;">
+                        </a>
+                    </td>
+                    -->
+                    <td>{{ component.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td><a href="{% url 'cart:cart_remove' component.id %}">Удалить</a></td>
+                    <td class="num">{{ item.price }}</td>
+                    <td class="num">{{ item.total_price }}</td>
+                </tr>
+            {% endwith %}
+        {% endfor %}
+        <tr class="total">
+            <td><h4>Всего</h4></td>
+            <td colspan="3"></td>
+            <td class="num">
+                <h4>{{ cart.get_total_price|floatformat:"2" }}</h4>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="text-right" style="margin-top: 10px;">
+        <a href="{% url 'shop:component_list' %}" class="btn btn-outline-dark mt-auto">Продолжить покупки</a>
+        <a href="{% url 'orders:order_create' %}" class="btn btn-outline-dark mt-auto">
+            Сделать заказ
+        </a>
+    </p>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "shop/base.html" %}
+
+{% block title %}Заказ{% endblock %}
+
+{% block content %}
+    <div class="order" style="width: 100%">
+    <h1>Заказ</h1>
+    <h3>Ваш заказ</h3>
+    <div class="order-info">
+        <div class="order-list">
+            <ul>
+                {% for item in cart %}
+                    <li>
+                        {{ item.quantity }} x {{ item.component.name }}
+                        <span>${{ item.total_price }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+            <h4>Total: ${{ cart.get_total_price|floatformat:"2" }}</h4>
+        </div>
+        <form action="." method="post" class="order-form" style="text-align: right; margin-left: 40px;">
+            {{ form.as_p }}
+            <p><input class="btn btn-outline-dark mt-auto" type="submit" value="Заказать"></p>
+            {% csrf_token %}
+        </form>
+    </div>
+
+    </div>
+{% endblock %}

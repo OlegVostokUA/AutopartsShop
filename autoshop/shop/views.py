@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Component, ComponentPhoto
 from taggit.models import Tag
-
+from cart.forms import CartAddComponentForm
 
 def component_list(request, category_slug=None, tag_slug=None):
     category = None
@@ -33,8 +33,10 @@ def component_detail(request, id, slug):
                                   id=id,
                                   slug=slug,
                                   available=True)
+    cart_component_form = CartAddComponentForm()
     context = {
-        'component': component
+        'component': component,
+        'cart_component_form': cart_component_form
     }
 
     return render(request, 'shop/component/detail.html', context)
