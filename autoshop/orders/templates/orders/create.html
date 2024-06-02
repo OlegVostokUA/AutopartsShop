@@ -12,11 +12,11 @@
                 {% for item in cart %}
                     <li>
                         {{ item.quantity }} x {{ item.component.name }}
-                        <span>${{ item.total_price }}</span>
+                        <span>{{ item.total_price }}</span>
                     </li>
                 {% endfor %}
             </ul>
-            <h4>Total: ${{ cart.get_total_price|floatformat:"2" }}</h4>
+            <h4>Всего: {{ cart.get_total_price|floatformat:"2" }}</h4>
         </div>
         <form action="." method="post" class="order-form" style="text-align: right; margin-left: 40px;">
             {{ form.as_p }}

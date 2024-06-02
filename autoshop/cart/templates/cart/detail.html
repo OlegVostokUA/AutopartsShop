@@ -36,7 +36,7 @@
                     <td>{{ component.name }}</td>
                     <td>{{ item.quantity }}</td>
                     <td><a href="{% url 'cart:cart_remove' component.id %}">Удалить</a></td>
-                    <td class="num">{{ item.price }}</td>
+                    <td class="num">{{ item.price }} {{ item.component.currency }}</td>
                     <td class="num">{{ item.total_price }}</td>
                 </tr>
             {% endwith %}
