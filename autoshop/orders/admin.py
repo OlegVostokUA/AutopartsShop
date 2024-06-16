@@ -35,9 +35,10 @@ class OrderItemInline(admin.TabularInline):
 
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['first_name', 'last_name',
-                    'city', 'postal_code',
-                    'created', 'updated', 'paid']
+                    'city', 'postal_code', 'phone',
+                    'created', 'paid']
     list_filter = ['paid', 'created', 'updated']
+    list_editable = ('paid', )
     inlines = [OrderItemInline]
     actions = [export_to_csv]
 

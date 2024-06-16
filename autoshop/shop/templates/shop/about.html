@@ -1,0 +1,25 @@
+{% extends "shop/base.html" %}
+{% load shop_tags %}
+{% block title %} Контакты {% endblock %}
+{% block content %}
+    <h1 class="card-header"> Контактная информация </h1>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>Телефон: </td>
+              <td>{{ contacts.phone_1 }}</td>
+            </tr>
+            <tr>
+              <td>Почта: </td>
+              <td>{{ contacts.email }}</td>
+            </tr>
+            <tr>
+              <td>Сайт: </td>
+              <td>{{ contacts.website }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div>
+            {{ contacts.description|linebreaks }}
+        </div>
+{% endblock %}

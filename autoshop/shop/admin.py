@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Component, Category, ComponentPhoto
+from .models import Component, Category, ComponentPhoto, Contacts
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -19,3 +19,4 @@ class ComponentAdmin(admin.ModelAdmin):
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Component, ComponentAdmin)
 admin.site.register(ComponentPhoto)
+admin.site.register(Contacts)

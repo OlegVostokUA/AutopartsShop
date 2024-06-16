@@ -75,3 +75,17 @@ class ComponentPhoto(models.Model):
     class Meta:
         verbose_name = 'Фото детали'
         verbose_name_plural = 'Фото детали'
+
+
+class Contacts(models.Model):
+    phone_1 = models.CharField(verbose_name='Телефон', max_length=14)
+    email = models.EmailField(verbose_name='Почта', max_length=30)
+    website = models.CharField(verbose_name='Сайт', max_length=30)
+    description = models.TextField(verbose_name='Описание', default='N/A')
+
+    def __str__(self):
+        return 'Контакты'
+
+    class Meta:
+        verbose_name = 'Контактная информация'
+        verbose_name_plural = 'Контактная информация'

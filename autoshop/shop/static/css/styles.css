@@ -10974,3 +10974,29 @@ textarea.form-control-lg {
 .butt {
     margin-left: 150px;
 }
+
+.search-detail {
+    flex-direction: row;
+    display: flex;
+}
+
+.cont {
+  display: flex;
+  align-items: right;
+  text-decoration: none;
+}
+
+.cont-link {
+	color: #565e6a;
+	font-size: 20px;
+	padding-right: 10px;
+    text-decoration: none;
+}
+
+.cont-text {
+	margin-top: 1px;
+	padding: 0;
+	margin-left: 25px;
+	color: orange;
+	font-size: 20px;
+}
